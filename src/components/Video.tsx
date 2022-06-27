@@ -1,12 +1,14 @@
-import { gql, useQuery } from "@apollo/client";
-import "@vime/core/themes/default.css";
-import { DefaultUi, Player, Youtube } from "@vime/react";
+// import { gql, useQuery } from "@apollo/client";
+// import "@vime/core/themes/default.css";
+// import { DefaultUi, Player, Youtube, Vimeo } from "@vime/react";
+import { YoutubeVideoIFrame } from "./YoutubeEmbeded";
 import {
   CaretRight,
   DiscordLogo,
   FileArrowDown,
   Lightning,
 } from "phosphor-react";
+
 import { useGetLessonBySlugQuery } from "../graphql/generated";
 
 interface VideoProps {
@@ -28,14 +30,18 @@ export function Video(props: VideoProps) {
     );
   }
 
+  console.log(data.lesson.videoId);
+
   return (
     <div className="flex-1 bg-gray-700">
-      <div className="bg-black flex justify-center">
+      <div className="flex justify-center">
         <div className="h-full w-full max-w-[1100px] max-h-[60vh] aspect-video">
-          <Player>
-            <Youtube videoId={data.lesson.videoId} />
+          <YoutubeVideoIFrame yvideoID={data.lesson.videoId} />
+          {/* <Player>
+            <Youtube videoId={data.lesson.videoId} cookies={true} />
+            <Vimeo videoId={data.lesson.videoId} />
             <DefaultUi />
-          </Player>
+          </Player> */}
         </div>
       </div>
 

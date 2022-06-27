@@ -1,6 +1,5 @@
 {
     "rewrites":  [
       {"source": "/(.*)", "destination": "/"}
-    //   {"source": "/event", "destination": "/pages/Event.tsx"}
     ]
   }
